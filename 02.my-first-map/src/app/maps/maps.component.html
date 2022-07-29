@@ -1,0 +1,29 @@
+<h1>Ejemplo Google Maps - eSource Capital</h1>
+
+<p>maps works!</p>
+<!-- <google-map></google-map> -->
+
+<google-map
+  height="500px"
+  width="100%"
+  [zoom]="zoom"
+  [center]="center"
+  [options]="options"
+>
+  <map-marker
+    #somemarker="mapMarker"
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="marker.label"
+    [title]="marker.title"
+    [options]="marker.options"
+    (mapClick)="openInfoWindow(somemarker, marker.info)"
+  >
+  </map-marker>
+
+  <map-info-window>{{ infoContent }}</map-info-window>
+</google-map>
+
+<button (click)="zoomIn()">Zoom in</button>
+<button (click)="zoomOut()">Zoom out</button>
+<button (click)="addMarker()">Add marker</button>
